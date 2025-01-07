@@ -1,6 +1,7 @@
 import React from 'react'
 import {Anime, API_URL} from "@/contants/constants";
 import {MotionDiv} from "@/components/MotionDiv";
+import {Badge} from "@/components/ui/badge";
 
 const AnimeCard = ({index,  data} : {index: number, data: Anime}) => {
     const {name, image: {original}, kind, episodes, score}: {id: string, name: string, kind: string, episodes: number, episodes_aired: number, image: {original: string}, score: string} = data;
@@ -33,9 +34,9 @@ const AnimeCard = ({index,  data} : {index: number, data: Anime}) => {
 
                 <div className="flex items-center justify-between p-2">
                     <p className="font-bold text-lg text-pretty break-all max-w-72">{name.replace(/_/g, " ")}</p>
-                    <div className='flex items-center justify-center w-fit mx-2 p-[2px] rounded-sm bg-gradient-to-br from-white/40 to-transparent opacity-20 pointer-events-none'>
+                    <Badge className='flex items-center justify-center w-fit mx-2 p-[4px] uppercase rounded-sm bg-gradient-to-br from-slate-400 to-transparent pointer-events-none'>
                         <p>{kind}</p>
-                    </div>
+                    </Badge>
                 </div>
 
                 <div className="flex items-center gap-6 px-2">
