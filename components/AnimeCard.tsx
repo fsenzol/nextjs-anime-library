@@ -1,7 +1,7 @@
 import React from 'react'
 import {Anime, API_URL} from "@/contants/constants";
 import {MotionDiv} from "@/components/MotionDiv";
-import {Badge} from "@/components/ui/badge";
+import {Badge} from "../components/ui/badge";
 
 const AnimeCard = ({index,  data} : {index: number, data: Anime}) => {
     const {name, image: {original}, kind, episodes, score}: {id: string, name: string, kind: string, episodes: number, episodes_aired: number, image: {original: string}, score: string} = data;
