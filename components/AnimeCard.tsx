@@ -25,7 +25,7 @@ const AnimeCard = ({index,  data} : {index: number, data: Anime}) => {
             <div>
                 <img
                     src={`${API_URL}/${original}`}
-                    className="object-fill aspect-auto w-full h-auto max-sm:max-h-72 rounded-lg"
+                    className="object-fill aspect-auto w-full h-auto max-sm:max-h-96 rounded-lg"
                     alt={name}
                 />
             </div>
