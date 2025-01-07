@@ -11,7 +11,7 @@ const Page = async ({searchParams}: {searchParams: Promise<{name: string}>}) => 
         <section>
             <nav className="p-5">
                 <Link href="/">
-                    <Button className="text-red-500 z-10 shadow-2xl border border-red-500 cursor-pointer">{'>'} HOME {'<'}
+                    <Button className="text-red-500 z-10 shadow-2xl border border-red-500 cursor-pointer">{'>'} BACK TO HOME {'<'}
                     </Button>
                 </Link>
             </nav>
