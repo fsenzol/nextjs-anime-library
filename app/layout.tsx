@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
 import Footer from "@/components/Footer";
-import {SpeedInsights} from '@vercel/speed-insights'
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -20,7 +19,6 @@ export default function RootLayout({
     <html lang="en">
       <body className={dmSans.className}
       >
-      <SpeedInsights />
         <main className="bg-[#0F1117] min-h-screen w-full text-white -z-50">
             {children}
         </main>
