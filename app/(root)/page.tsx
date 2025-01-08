@@ -24,7 +24,7 @@ export default function Home() {
                          autoPlay
                          muted
                          loop
-                         className="w-full h-auto object-cover absolute inset-0 -z-20 blur-md rounded-lg filter"/>
+                         className="w-full h-auto min-h-screen object-cover absolute inset-0 -z-20 blur-md rounded-lg filter"/>
               </div>
           </header>
           <LoadMore/>
