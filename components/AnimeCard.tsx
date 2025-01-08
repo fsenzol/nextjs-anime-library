@@ -8,7 +8,7 @@ const AnimeCard = ({index,  data} : {index: number, data: Anime}) => {
     const cardRef = useRef<HTMLDivElement | null>(null);
 
     const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
-        const box = cardRef.current.getBoundingClientRect();
+        const box = cardRef.current && cardRef.current.getBoundingClientRect();
         const x = event.clientX - box.left;
         const y = event.clientY - box.top;
 
