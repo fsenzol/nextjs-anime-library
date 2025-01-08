@@ -8,7 +8,9 @@ const AnimeCard = ({index,  data} : {index: number, data: Anime}) => {
     const cardRef = useRef<HTMLDivElement | null>(null);
 
     const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
-        const box = cardRef.current && cardRef.current.getBoundingClientRect();
+        if (cardRef.current) {
+            const box = cardRef.current.getBoundingClientRect();
+    
         const x = event.clientX - box.left;
         const y = event.clientY - box.top;
 
@@ -21,7 +23,20 @@ const AnimeCard = ({index,  data} : {index: number, data: Anime}) => {
             scale: 1.04,
             transformPerspective: 1000,
             ease: 'power3.out',
+        });const x = event.clientX - box.left;
+        const y = event.clientY - box.top;
+
+        const rotateX = ((y / box.height) - 0.5) * 30; // Tilt vertically
+        const rotateY = ((x / box.width) - 0.5) * -30; // Tilt horizontally
+
+        gsap.to(cardRef.current, {
+            rotateX,
+            rotateY,
+            scale: 1.04,
+            transformPerspective: 1000,
+            ease: 'power3.out',
         });
+        }
     };
 
     const handleMouseLeave = () => {
