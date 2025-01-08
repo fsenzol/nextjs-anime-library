@@ -7,7 +7,7 @@ const AnimeCard = ({index,  data} : {index: number, data: Anime}) => {
     const {name, image: {original}, kind, episodes, score}: {id: string, name: string, kind: string, episodes: number, episodes_aired: number, image: {original: string}, score: string} = data;
     const cardRef = useRef<HTMLDivElement>(null);
 
-    const handleMouseMove = (event) => {
+    const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
         const box = cardRef.current.getBoundingClientRect();
         const x = event.clientX - box.left;
         const y = event.clientY - box.top;
