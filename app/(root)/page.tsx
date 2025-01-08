@@ -13,16 +13,21 @@ export default function Home() {
                   <h1 className="text-7xl text-pretty max-lg:my-6 break-words leading-[80px]">Explore The <span
                       className="text-red-500">Diverse Realms</span> of Anime Magic</h1>
                   <img
+                      alt="logo"
                       className="object-contain lg:max-h-72 inset-0 h-auto"
                       src="./anime.png"
                   />
               </div>
               <div>
-                  <img src="./hero.png" alt="logo" className="w-full h-full object-cover absolute inset-0"
-                       tabIndex={-1}/>
+                  <video src="./logo.mp4"
+                         poster="./hero.png"
+                         autoPlay
+                         muted
+                         loop
+                         className="w-full h-auto object-cover absolute inset-0 -z-20 blur-md rounded-lg filter"/>
               </div>
           </header>
-          <LoadMore />
+          <LoadMore/>
       </main>
-  );
+    );
 }

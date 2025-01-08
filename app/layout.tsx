@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
 import Footer from "@/components/Footer";
 import "./globals.css";
+import React from "react";
 
 export const metadata: Metadata = {
   title: "Anime Library",
@@ -15,11 +16,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
+
+    return (
     <html lang="en">
-      <body className={dmSans.className}
+      <body className={`${dmSans.className} dark`}
       >
-        <main className="bg-[#0F1117] min-h-screen w-full text-white -z-50">
+        <main className="min-h-screen w-full text-white -z-50 dark ">
             {children}
         </main>
         <Footer />

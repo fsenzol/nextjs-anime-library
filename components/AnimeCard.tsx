@@ -1,9 +1,38 @@
-import React from 'react'
+import React, {useRef} from 'react'
 import {Anime, API_URL} from "@/contants/constants";
 import {MotionDiv} from "@/components/MotionDiv";
+import gsap from "gsap";
 
 const AnimeCard = ({index,  data} : {index: number, data: Anime}) => {
     const {name, image: {original}, kind, episodes, score}: {id: string, name: string, kind: string, episodes: number, episodes_aired: number, image: {original: string}, score: string} = data;
+    const cardRef = useRef<HTMLDivElement>(null);
+
+    const handleMouseMove = (event) => {
+        const box = cardRef.current.getBoundingClientRect();
+        const x = event.clientX - box.left;
+        const y = event.clientY - box.top;
+
+        const rotateX = ((y / box.height) - 0.5) * 30; // Tilt vertically
+        const rotateY = ((x / box.width) - 0.5) * -30; // Tilt horizontally
+
+        gsap.to(cardRef.current, {
+            rotateX,
+            rotateY,
+            scale: 1.04,
+            transformPerspective: 1000,
+            ease: 'power3.out',
+        });
+    };
+
+    const handleMouseLeave = () => {
+        // Reset the element to its original state
+        gsap.to(cardRef.current, {
+            rotateX: 0,
+            rotateY: 0,
+            scale: 1,
+            ease: 'power3.out',
+        });
+    };
 
     const variants = {
         hidden: {opacity: 0},
@@ -12,7 +41,10 @@ const AnimeCard = ({index,  data} : {index: number, data: Anime}) => {
 
     return (
         <MotionDiv
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
             variants={variants}
+            ref={cardRef}
             initial="hidden"
             animate="visible"
             transition={{
@@ -20,11 +52,11 @@ const AnimeCard = ({index,  data} : {index: number, data: Anime}) => {
                 ease: "easeInOut",
                 duration: 0.5
             }}
-            className="my-6 p-2 flex flex-col justify-between">
+            className="my-6 p-2 flex flex-col justify-between bg-primary/5 border rounded-lg cursor-pointer">
             <div>
                 <img
                     src={`${API_URL}/${original}`}
-                    className="object-fill aspect-auto w-full h-auto max-sm:max-h-96 rounded-lg"
+                    className="object-fill aspect-auto w-full h-auto max-sm:max-h-96 rounded-sm"
                     alt={name}
                 />
             </div>
@@ -39,6 +71,7 @@ const AnimeCard = ({index,  data} : {index: number, data: Anime}) => {
                     <div className="flex items-center gap-1">
                         <img
                             src="./episode.svg"
+                            alt='Episode'
                             className="object-contain"
                         />
                         <span className="font-bold">{episodes}</span>
@@ -46,13 +79,14 @@ const AnimeCard = ({index,  data} : {index: number, data: Anime}) => {
                     <div className="flex items-center gap-1">
                         <img
                             src="./star.svg"
+                            alt='Star'
                             className="object-contain"
                         />
                         <span className="font-boldtext-yellow-500">{score}</span>
                     </div>
 
                     <div
-                        className='flex items-center justify-center w-fit mx-2 px-[4px] uppercase rounded-sm bg-gradient-to-br text-sm font-bold from-slate-400 to-transparent pointer-events-none'>
+                        className='flex items-center justify-center w-fit mx-2 px-[4px] uppercase rounded-sm bg-accent-foreground/10 border shadow-md pointer-events-none'>
                         <p>{kind}</p>
                     </div>
 
