@@ -5,7 +5,7 @@ import gsap from "gsap";
 
 const AnimeCard = ({index,  data} : {index: number, data: Anime}) => {
     const {name, image: {original}, kind, episodes, score}: {id: string, name: string, kind: string, episodes: number, episodes_aired: number, image: {original: string}, score: string} = data;
-    const cardRef = useRef<HTMLDivElement>(null);
+    const cardRef = useRef<HTMLDivElement | null>(null);
 
     const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
         const box = cardRef.current.getBoundingClientRect();
