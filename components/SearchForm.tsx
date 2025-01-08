@@ -18,8 +18,7 @@ const SearchForm = () => {
             router.push(`/search?name=${e.get("name")}`)
         } catch(error) {
             if (error instanceof ZodError) {
-                setErr(error.flatten().fieldErrors as unknown as Record<string, string>)
-                console.error(err)
+                return setErr(error.flatten().fieldErrors as unknown as Record<string, string>)
             } else {
                 console.log("Unknown error", err)
             }
@@ -36,7 +35,7 @@ const SearchForm = () => {
         <form action={dispatch}>
             <div className="flex w-full pt-8 px-5 pb-1 justify-center items-center space-x-2 z-30" tabIndex={0}>
                 <Input type="text" placeholder="Anime title/name" name="name" className="max-w-lg"/>
-                <Button type="submit" className="bg-white text-black hover:text-white" disabled={isDone}>{isDone ? "Search" : "Searching..."}</Button>
+                <Button type="submit" className="bg-white text-black hover:text-white" disabled={isDone}>{!isDone ? "Search" : "Searching..."}</Button>
             </div>
             {err.name && (<p className="text-sm font-bold text-red-600">{err.name}</p>)}
         </form>

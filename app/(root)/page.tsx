@@ -1,6 +1,6 @@
-import Hero from "@/components/Hero";
 import React from "react";
 import Navigation from "@/components/Navigation";
+import LoadMore from "@/components/LoadMore";
 
 
 export default function Home() {
@@ -22,7 +22,7 @@ export default function Home() {
                        tabIndex={-1}/>
               </div>
           </header>
-          <Hero/>
+          <LoadMore />
       </main>
   );
 }

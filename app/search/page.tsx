@@ -2,11 +2,17 @@ import React from 'react'
 import SearchMore from "@/components/SearchMore";
 import Link from "next/link";
 import {Button} from "@/components/ui/button";
+import {redirect} from "next/navigation";
 
 
 const Page = async ({searchParams}: {searchParams: Promise<{name: string}>}) => {
     //const animeName = (await params).name
     const animeName = (await searchParams).name
+
+    if (!animeName) {
+        redirect("/");
+    }
+
     return (
         <section>
             <nav className="p-5">

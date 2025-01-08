@@ -19,7 +19,6 @@ const LoadMore = () => {
             fetchAnime(page).then(res => {
                 setData( data => [...data, ...res])
                 page++;
-                console.log(page);
             })
         }
     }, [data, inView]);
@@ -34,6 +33,7 @@ const LoadMore = () => {
                     ))}
                 </div>
             </section>
+
             <div className="w-full p-2 pb-6 flex items-center justify-center" ref={ref}>
                 <Image src="/spinner.svg"
                        alt="spinner"
