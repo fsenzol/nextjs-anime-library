@@ -9,6 +9,8 @@ import AnimeCard from "@/components/AnimeCard";
 
 let page = 1;
 
+import spinnerImage from "@/app/assets/images/spinner.svg";
+
 const LoadMore = () => {
 
     const {ref, inView} = useInView();
@@ -35,7 +37,7 @@ const LoadMore = () => {
             </section>
 
             <div className="w-full p-2 pb-6 flex items-center justify-center" ref={ref}>
-                <Image src="/spinner.svg"
+                <Image src={spinnerImage}
                        alt="spinner"
                        width={56}
                        height={56}

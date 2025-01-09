@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input"
 import {useRouter} from "next/navigation";
 import {formSchema} from "@/contants/constants";
 import {ZodError} from "zod";
+import {Search} from "lucide-react";
 
 
 const SearchForm = () => {
@@ -33,9 +34,12 @@ const SearchForm = () => {
     })
     return (
         <form action={dispatch}>
-            <div className="flex w-full pt-8 px-5 pb-1 justify-center items-center space-x-2 z-30" tabIndex={0}>
-                <Input type="text" placeholder="Anime title/name" name="name" className="max-w-lg"/>
-                <Button type="submit" className="bg-white text-black hover:text-white" disabled={isDone}>{!isDone ? "Search" : "Searching..."}</Button>
+            <div className="flex w-fit mt-8 mx-5 p-1 rounded-full bg-accent/80 justify-center items-center space-x-2 z-30 " tabIndex={0}>
+                <Input type="text" placeholder="Search... <Anime>" name="name" className="max-w-lg rounded-full bg-primary/90 text-primary-foreground/60 !outline-0"
+                />
+                <Button type="submit" className="rounded-full bg-transparent" disabled={isDone}>
+                    <Search className="size-6 stroke-primary" />
+                </Button>
             </div>
             {err.name && (<p className="text-sm font-bold text-red-600">{err.name}</p>)}
         </form>
