@@ -30,9 +30,11 @@ const LoadMore = () => {
             <section className="px-3">
                 <h1 className="my-10 text-2xl text-red-200 uppercase font-bold">Explore Anime</h1>
                 <div className="grid max-sm:grid-cols-1 max-md:grid-cols-2 max-lg:grid-cols-3 grid-cols-4 2xl:grid-cols-5 gap-3">
-                    {data.map((item: AnilistAnimes, index) => (
-                        <AnimeCard data={item} index={index} key={item.id + index}/>
-                    ))}
+                    {
+                        data.map((item, index) => {
+                            return ( <AnimeCard data={item} index={index} key={item.id + index}/>)
+                        })
+                    }
                 </div>
             </section>
 

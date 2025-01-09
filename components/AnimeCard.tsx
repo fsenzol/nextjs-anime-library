@@ -6,10 +6,12 @@ import Image from "next/image";
 import episodeImg from "@/app/assets/images/episode.svg"
 import starImg from "@/app/assets/images/star.svg"
 import CardImage from "@/components/CardImage.";
+import React, {useMemo} from "react";
 
 
 const AnimeCard = ({index, data}: { index: number, data: AnilistAnimes }) => {
 
+    const memoizedData = useMemo(() => data, [data]);
 
     const {
         title: {
@@ -22,7 +24,7 @@ const AnimeCard = ({index, data}: { index: number, data: AnilistAnimes }) => {
         averageScore,
         episodes,
         type
-    } : AnilistAnimes = data
+    } : AnilistAnimes = memoizedData
 
 
 
@@ -68,4 +70,4 @@ const AnimeCard = ({index, data}: { index: number, data: AnilistAnimes }) => {
         </MotionDiv>
     )
 }
-export default AnimeCard
+export default React.memo(AnimeCard)
