@@ -4,7 +4,7 @@ import React, {useEffect, useState} from 'react'
 import Image from "next/image";
 import {useInView} from "react-intersection-observer";
 import {fetchAnime} from "@/app/actions";
-import {Anime} from "@/contants/constants";
+import {AnilistAnimes} from "@/contants/constants";
 import AnimeCard from "@/components/AnimeCard";
 
 let page = 1;
@@ -14,7 +14,7 @@ import spinnerImage from "@/app/assets/images/spinner.svg";
 const LoadMore = () => {
 
     const {ref, inView} = useInView();
-    const [data, setData] = useState<Anime[]>([]);
+    const [data, setData] = useState<AnilistAnimes[]>([]);
 
     useEffect(() => {
         if (inView) {
@@ -30,8 +30,8 @@ const LoadMore = () => {
             <section className="px-3">
                 <h1 className="my-10 text-2xl text-red-200 uppercase font-bold">Explore Anime</h1>
                 <div className="grid max-sm:grid-cols-1 max-md:grid-cols-2 max-lg:grid-cols-3 grid-cols-4 2xl:grid-cols-5 gap-3">
-                    {data.map((item: Anime, index) => (
-                        <AnimeCard data={item} index={index} key={item.id}/>
+                    {data.map((item: AnilistAnimes, index) => (
+                        <AnimeCard data={item} index={index} key={item.id + index}/>
                     ))}
                 </div>
             </section>

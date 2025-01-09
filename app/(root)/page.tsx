@@ -5,7 +5,8 @@ import Image from "next/image";
 
 import logoImage from "@/app/assets/images/logo.svg"
 import animeImage from "@/app/assets/images/anime.png"
-import {randomBgImage} from "@/app/assets/images";
+
+export const experimental_ppr = true
 
 export default function Home() {
     return (

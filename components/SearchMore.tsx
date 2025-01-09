@@ -3,16 +3,18 @@
 import React, {useEffect, useState} from 'react'
 import Image from "next/image";
 import {useInView} from "react-intersection-observer";
-import {Anime} from "@/contants/constants";
+import {AnilistAnimes} from "@/contants/constants";
 import AnimeCard from "@/components/AnimeCard";
 import {findAllAnimes} from "@/app/actions";
 
 let page = 1;
 
+import spinnerImage from "@/app/assets/images/spinner.svg";
+
 const SearchMore = ({name} : {name: string}) => {
 
     const {ref, inView} = useInView();
-    const [data, setData] = useState<Anime[]>([]);
+    const [data, setData] = useState<AnilistAnimes[]>([]);
 
     useEffect(() => {
         if (inView) {
@@ -21,19 +23,19 @@ const SearchMore = ({name} : {name: string}) => {
                 page++;
             })
         }
-    }, [data, inView]);
+    }, [data, inView, name]);
 
     return (
         <main>
             <section className="px-3">
                 <div className="grid max-sm:grid-cols-1 max-md:grid-cols-2 max-lg:grid-cols-3 grid-cols-4 2xl:grid-cols-5 ">
-                    {data.map((item: Anime, index) => (
+                    {data.map((item: AnilistAnimes, index) => (
                         <AnimeCard data={item} index={index} key={item.id}/>
                     ))}
                 </div>
             </section>
             <div className="w-full p-2 pb-6 flex items-center justify-center" ref={ref}>
-                <Image src="/spinner.svg"
+                <Image src={spinnerImage}
                        alt="spinner"
                        width={56}
                        height={56}
