@@ -60,7 +60,7 @@ export const MotionDiv = ({children, index, color} : Readonly<{
                     backgroundColor: `${color}3A`,
                 }
             }
-            className={`rounded-lg py-1 px-2 cursor-pointer overflow-hidden backdrop-blur-[3px]`}
+            className={`rounded-lg py-2 px-2 cursor-pointer overflow-hidden backdrop-blur-[3px]`}
             transition={{
                 delay: (0.25 * (index % 8)),
                 ease: "easeInOut",

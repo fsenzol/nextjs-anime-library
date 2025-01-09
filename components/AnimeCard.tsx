@@ -6,16 +6,13 @@ import Image from "next/image";
 import episodeImg from "@/app/assets/images/episode.svg"
 import starImg from "@/app/assets/images/star.svg"
 import CardImage from "@/components/CardImage.";
-import React, {useMemo} from "react";
+import React from "react";
 
 
 const AnimeCard = ({index, data}: { index: number, data: AnilistAnimes }) => {
 
-    const memoizedData = useMemo(() => data, [data]);
-
     const {
         title: {
-            romaji,
             english
         },
         coverImage: {
@@ -24,7 +21,7 @@ const AnimeCard = ({index, data}: { index: number, data: AnilistAnimes }) => {
         averageScore,
         episodes,
         type
-    } : AnilistAnimes = memoizedData
+    } : AnilistAnimes = data
 
 
 
@@ -38,7 +35,7 @@ const AnimeCard = ({index, data}: { index: number, data: AnilistAnimes }) => {
             <div>
 
                 <div className="flex items-center justify-between p-2">
-                    <p className="font-bold text-lg text-pretty break-all max-w-72">{`${english} (${romaji})`}</p>
+                    <p className="font-bold text-lg text-pretty break-all max-w-72">{`${english}`}</p>
                 </div>
 
                 <div className="flex items-center gap-6 px-2">

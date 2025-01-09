@@ -19,8 +19,8 @@ const CardImage =  ({src} : {src: string}) => {
     const [imgSrc, setImgSrc] = useState(src);
 
     return (
-        <div>
-            <Suspense fallback={<Skeleton className="p-5 h-full w-full"/>} >
+        <div className="overflow-clip">
+            <Suspense fallback={<Skeleton className="h-[300px] w-full rounded-md"/>} >
                 {LazyLoadImage(imgSrc, () => setImgSrc(imgSrc))}
             </Suspense>
         </div>

@@ -20,7 +20,6 @@ export interface Anime {
 export interface AnilistAnimes {
     id: string
     title: {
-        romaji: string
         english: string,
     },
     coverImage: {
@@ -41,6 +40,28 @@ query ($page: Int, $perPage: Int) {
       id
       title {
         romaji
+        english
+      }
+      bannerImage
+      type
+      episodes
+      coverImage {
+        large
+        extraLarge
+        color
+      }
+      averageScore
+    }
+  }
+}
+`)
+
+export const QUERY_GET_ANIME_LIST_BY_NAME =  (`
+query ($page: Int, $perPage: Int, $name: String) {
+  Page(page: $page , perPage: $perPage) {
+    media(type: ANIME, sort: POPULARITY_DESC, search: $name) {
+      id
+      title {
         english
       }
       bannerImage
